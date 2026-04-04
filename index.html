@@ -9,112 +9,40 @@
 </head>
 <body>
 
-  <audio id="ocean" loop src="https://www.soundjay.com/nature/sounds/ocean-wave-1.mp3"></audio>
-  <button id="soundBtn" id="soundBtn">sound</button>
-
-  <!-- FRONT COVER -->
   <div id="cover">
-    <div class="spine"><span>Seal Diaries</span></div>
-    <div class="cover-face">
-      <p class="c-tag">Personal Journal · Vol. I</p>
-
-      <!-- cute SVG seal -->
-      <div class="c-seal">
-        <svg viewBox="0 0 100 80" xmlns="http://www.w3.org/2000/svg">
-          <!-- body -->
-          <ellipse cx="50" cy="52" rx="32" ry="20" fill="#c8a0d8"/>
-          <!-- head -->
-          <circle cx="50" cy="28" r="16" fill="#d8b0e8"/>
-          <!-- ears -->
-          <ellipse cx="38" cy="16" rx="4" ry="6" fill="#d8b0e8"/>
-          <ellipse cx="62" cy="16" rx="4" ry="6" fill="#d8b0e8"/>
-          <!-- eyes -->
-          <circle cx="44" cy="26" r="3.5" fill="#3a2a4a"/>
-          <circle cx="56" cy="26" r="3.5" fill="#3a2a4a"/>
-          <circle cx="45" cy="25" r="1" fill="white"/>
-          <circle cx="57" cy="25" r="1" fill="white"/>
-          <!-- nose -->
-          <ellipse cx="50" cy="32" rx="3" ry="2" fill="#a070b8"/>
-          <!-- whiskers -->
-          <line x1="53" y1="32" x2="66" y2="30" stroke="#9070a8" stroke-width="0.8" stroke-linecap="round"/>
-          <line x1="53" y1="33" x2="66" y2="34" stroke="#9070a8" stroke-width="0.8" stroke-linecap="round"/>
-          <line x1="47" y1="32" x2="34" y2="30" stroke="#9070a8" stroke-width="0.8" stroke-linecap="round"/>
-          <line x1="47" y1="33" x2="34" y2="34" stroke="#9070a8" stroke-width="0.8" stroke-linecap="round"/>
-          <!-- flippers -->
-          <ellipse cx="22" cy="60" rx="10" ry="5" fill="#b890cc" transform="rotate(-20 22 60)"/>
-          <ellipse cx="78" cy="60" rx="10" ry="5" fill="#b890cc" transform="rotate(20 78 60)"/>
-          <!-- tail -->
-          <ellipse cx="50" cy="70" rx="14" ry="6" fill="#b890cc"/>
-          <ellipse cx="42" cy="74" rx="7" ry="4" fill="#b890cc" transform="rotate(-15 42 74)"/>
-          <ellipse cx="58" cy="74" rx="7" ry="4" fill="#b890cc" transform="rotate(15 58 74)"/>
-          <!-- blush -->
-          <ellipse cx="40" cy="31" rx="4" ry="2.5" fill="rgba(255,160,180,0.4)"/>
-          <ellipse cx="60" cy="31" rx="4" ry="2.5" fill="rgba(255,160,180,0.4)"/>
-        </svg>
-      </div>
-
-      <h1>Seal Diaries</h1>
-      <p class="c-sub">the unfiltered thoughts of one harbour seal</p>
-      <hr class="c-rule"/>
-      <p class="c-species">Phoca vitulina · Pacific Coast</p>
-      <p class="c-weather" id="coverWeather"></p>
-      <button id="openBtn">Open Journal</button>
-      <p class="c-year" id="coverYear"></p>
-    </div>
+    <h1>Seal Diaries</h1>
+    <p class="subtitle">the life of a harbour seal</p>
+    <img src="images/pic1.jpg" class="cover-img"/>
+    <p class="species">Phoca vitulina · Pacific Coast</p>
+    <button onclick="openJournal()">Open Journal</button>
   </div>
 
-  <!-- JOURNAL -->
   <div id="journal" class="hidden">
-    <div class="j-top">
-      <button id="closeBtn">← Cover</button>
-      <span id="pageCounter"></span>
-      <span id="moonPhase"></span>
+    <div class="top-bar">
+      <button onclick="closeJournal()">Back</button>
+      <span id="counter"></span>
     </div>
-    <div id="book"></div>
-    <div class="nav">
-      <button id="prevBtn">← Prev</button>
-      <div id="navDots"></div>
-      <button id="nextBtn">Next →</button>
-    </div>
-    <p class="hint">arrow keys or swipe</p>
-  </div>
-
-  <!-- BACK COVER -->
-  <div id="backCover" class="hidden">
-    <div class="spine spine-back"><span>Seal Diaries</span></div>
-    <div class="cover-face back-face">
-      <p class="c-tag">End of Vol. I</p>
-      <div class="c-seal">
-        <svg viewBox="0 0 100 80" xmlns="http://www.w3.org/2000/svg">
-          <ellipse cx="50" cy="52" rx="32" ry="20" fill="#c8a0d8"/>
-          <circle cx="50" cy="28" r="16" fill="#d8b0e8"/>
-          <ellipse cx="38" cy="16" rx="4" ry="6" fill="#d8b0e8"/>
-          <ellipse cx="62" cy="16" rx="4" ry="6" fill="#d8b0e8"/>
-          <circle cx="44" cy="26" r="3.5" fill="#3a2a4a"/>
-          <circle cx="56" cy="26" r="3.5" fill="#3a2a4a"/>
-          <circle cx="45" cy="25" r="1" fill="white"/>
-          <circle cx="57" cy="25" r="1" fill="white"/>
-          <ellipse cx="50" cy="32" rx="3" ry="2" fill="#a070b8"/>
-          <!-- smile -->
-          <path d="M 46 35 Q 50 39 54 35" stroke="#a070b8" stroke-width="1.2" fill="none" stroke-linecap="round"/>
-          <line x1="53" y1="32" x2="66" y2="30" stroke="#9070a8" stroke-width="0.8" stroke-linecap="round"/>
-          <line x1="47" y1="32" x2="34" y2="30" stroke="#9070a8" stroke-width="0.8" stroke-linecap="round"/>
-          <ellipse cx="22" cy="60" rx="10" ry="5" fill="#b890cc" transform="rotate(-20 22 60)"/>
-          <ellipse cx="78" cy="60" rx="10" ry="5" fill="#b890cc" transform="rotate(20 78 60)"/>
-          <ellipse cx="50" cy="70" rx="14" ry="6" fill="#b890cc"/>
-          <ellipse cx="42" cy="74" rx="7" ry="4" fill="#b890cc" transform="rotate(-15 42 74)"/>
-          <ellipse cx="58" cy="74" rx="7" ry="4" fill="#b890cc" transform="rotate(15 58 74)"/>
-          <ellipse cx="40" cy="31" rx="4" ry="2.5" fill="rgba(255,160,180,0.4)"/>
-          <ellipse cx="60" cy="31" rx="4" ry="2.5" fill="rgba(255,160,180,0.4)"/>
-        </svg>
+    <div class="spread">
+      <div class="left-page">
+        <img id="entryPhoto" src=""/>
       </div>
-      <p class="c-quote">"I have said what I needed to say.<br>The fish know what they did."</p>
-      <hr class="c-rule"/>
-      <p class="c-fact" id="backFact"></p>
-      <button id="restartBtn">Start Over</button>
+      <div class="right-page">
+        <div class="page-top">
+          <p class="day" id="entryDay"></p>
+          <p class="date" id="entryDate"></p>
+        </div>
+        <p class="weather" id="entryWeather"></p>
+        <p class="entry-text" id="entryText"></p>
+        <p class="note" id="entryNote"></p>
+      </div>
+    </div>
+    <div class="nav">
+      <button id="prevBtn" onclick="prevPage()">Prev</button>
+      <button id="nextBtn" onclick="nextPage()">Next</button>
     </div>
   </div>
 
-  <script src="script.js"></script>
+  <script src="javascript/entries.js"></script>
+  <script src="javascript/script.js"></script>
 </body>
 </html>
