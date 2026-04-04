@@ -18,7 +18,7 @@ Tech Stack:
 - CSS
 - JavaScript
 
-As this was a basic website, the only thing complex was figuring out the color scheme to go with it and making the styling flattering.
+As this was a basic website, the only thing complex was figuring out the color scheme to go with it and making the styling flattering. Also used https://www.fisheries.noaa.gov/species/harbor-seal for information.
 
 # What I Struggled With and What I Learnt
 
