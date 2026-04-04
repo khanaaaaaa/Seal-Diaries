@@ -9,36 +9,40 @@
 </head>
 <body>
 
-  <div id="cover">
-    <h1>Seal Diaries</h1>
-    <p class="subtitle">the life of a harbour seal</p>
-    <img src="images/pic1.jpg" class="cover-img"/>
-    <p class="species">Phoca vitulina · Pacific Coast</p>
-    <button onclick="openJournal()">Open Journal</button>
+  <div id="coverWrap">
+    <div id="cover">
+      <div id="coverFront">
+        <img src="images/sealcover.jpg" class="cover-img"/>
+        <div class="cover-text">
+          <h1>Seal Diaries</h1>
+          <p class="subtitle">the life of a harbour seal</p>
+          <p class="species">Phoca vitulina · Pacific Coast</p>
+          <button onclick="openJournal()">Open Journal</button>
+        </div>
+      </div>
+    </div>
   </div>
 
   <div id="journal" class="hidden">
     <div class="top-bar">
-      <button onclick="closeJournal()">Back</button>
+      <button onclick="closeJournal()">← Back</button>
       <span id="counter"></span>
     </div>
     <div class="spread">
       <div class="left-page">
-        <img id="entryPhoto" src=""/>
+        <img id="entryPhoto" src="" alt=""/>
       </div>
       <div class="right-page">
         <div class="page-top">
-          <p class="day" id="entryDay"></p>
-          <p class="date" id="entryDate"></p>
+          <span class="day" id="entryDay"></span>
+          <span class="weather" id="entryWeather"></span>
         </div>
-        <p class="weather" id="entryWeather"></p>
         <p class="entry-text" id="entryText"></p>
-        <p class="note" id="entryNote"></p>
       </div>
     </div>
     <div class="nav">
-      <button id="prevBtn" onclick="prevPage()">Prev</button>
-      <button id="nextBtn" onclick="nextPage()">Next</button>
+      <button id="prevBtn" onclick="prevPage()">← Prev</button>
+      <button id="nextBtn" onclick="nextPage()">Next →</button>
     </div>
   </div>
 

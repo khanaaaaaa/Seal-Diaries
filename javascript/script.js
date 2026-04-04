@@ -3,32 +3,34 @@ let current = 0;
 function showEntry(i) {
   const e = entries[i];
 
-  document.getElementById('entryPhoto').src           = e.photo;
+  const photo = document.getElementById('entryPhoto');
+  photo.src = '';
+  photo.src = e.photo;
+
   document.getElementById('entryDay').textContent     = e.day;
-  document.getElementById('entryDate').textContent    = e.date;
   document.getElementById('entryWeather').textContent = e.weather;
-  document.getElementById('entryNote').textContent    = e.note;
+  document.getElementById('entryText').textContent    = e.text;
   document.getElementById('counter').textContent      = `${i + 1} / ${entries.length}`;
 
   document.getElementById('prevBtn').disabled = i === 0;
   document.getElementById('nextBtn').disabled = i === entries.length - 1;
-
-  typeText(e.text);
-}
-
-function typeText(text) {
-  document.getElementById('entryText').textContent = text;
 }
 
 function openJournal() {
-  document.getElementById('cover').classList.add('hidden');
-  document.getElementById('journal').classList.remove('hidden');
-  showEntry(0);
+  const wrap = document.getElementById('coverWrap');
+  wrap.classList.add('opening');
+  setTimeout(() => {
+    wrap.classList.add('hidden');
+    document.getElementById('journal').classList.remove('hidden');
+    showEntry(0);
+  }, 500);
 }
 
 function closeJournal() {
+  const wrap = document.getElementById('coverWrap');
+  wrap.classList.remove('opening', 'hidden');
   document.getElementById('journal').classList.add('hidden');
-  document.getElementById('cover').classList.remove('hidden');
+  current = 0;
 }
 
 function nextPage() {
@@ -45,7 +47,8 @@ function prevPage() {
   }
 }
 
-document.addEventListener('keydown', e => {
+document.addEventListener('keydown', function(e) {
+  if (document.getElementById('journal').classList.contains('hidden')) return;
   if (e.key === 'ArrowRight') nextPage();
   if (e.key === 'ArrowLeft')  prevPage();
 });

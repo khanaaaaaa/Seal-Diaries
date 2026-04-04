@@ -1,12 +1,5 @@
-/* --------------------------------
-   RESET
--------------------------------- */
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
-
-/* --------------------------------
-   BODY
--------------------------------- */
 body {
   min-height: 100vh;
   background: #c4a882;
@@ -19,77 +12,99 @@ body {
   font-family: 'Lora', serif;
 }
 
-.hidden { display: none; }
+.hidden { display: none !important; }
 
 
 /* --------------------------------
    COVER
 -------------------------------- */
-#cover {
-  text-align: center;
-  background: #3b2410;
-  border-radius: 4px 16px 16px 4px;
-  padding: 48px 40px;
-  width: 300px;
-  box-shadow: -6px 0 0 #2a1a0a, -10px 4px 40px rgba(0,0,0,0.5);
-  background-image: repeating-linear-gradient(
-    45deg, transparent, transparent 3px,
-    rgba(255,255,255,0.01) 3px, rgba(255,255,255,0.01) 6px
-  );
+#coverWrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.5s ease, transform 0.5s ease;
 }
 
-#cover h1 {
-  font-size: 2rem;
+#coverWrap.opening {
+  opacity: 0;
+  transform: scale(0.92);
+  pointer-events: none;
+}
+
+#cover {
+  width: 320px;
+  filter: drop-shadow(-8px 8px 32px rgba(0,0,0,0.45));
+}
+
+#coverFront {
+  width: 320px;
+  background: #2e1a08;
+  border-radius: 4px 14px 14px 4px;
+  box-shadow: -6px 0 0 #1a0e04;
+}
+
+.cover-img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  object-position: center 20%;
+  display: block;
+}
+
+.cover-text {
+  padding: 28px 32px 36px;
+  text-align: center;
+}
+
+.cover-text h1 {
+  font-size: 1.9rem;
   color: #f5e6c8;
   margin-bottom: 6px;
 }
 
-#cover .subtitle {
+.cover-text .subtitle {
   font-style: italic;
-  font-size: 0.8rem;
+  font-size: 0.78rem;
   color: #c8a878;
-  margin-bottom: 24px;
+  margin-bottom: 8px;
 }
 
-#cover .cover-img {
-  width: 100%;
-  height: 180px;
-  object-fit: cover;
-  border-radius: 8px;
-  margin-bottom: 20px;
-  opacity: 0.92;
-}
-
-#cover .species {
-  font-size: 0.55rem;
+.cover-text .species {
+  font-size: 0.52rem;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: #8a6a48;
+  color: #7a5a38;
   margin-bottom: 24px;
 }
 
-#cover button {
+.cover-text button {
   background: transparent;
   border: 1px solid rgba(245,230,200,0.35);
   color: #f5e6c8;
-  padding: 11px 30px;
+  padding: 10px 28px;
   border-radius: 30px;
   font-family: 'Lora', serif;
-  font-size: 0.82rem;
+  font-size: 0.8rem;
   cursor: pointer;
   transition: background 0.2s;
 }
-#cover button:hover { background: rgba(245,230,200,0.1); }
+.cover-text button:hover { background: rgba(245,230,200,0.1); }
 
 
 /* --------------------------------
-   JOURNAL WRAPPER
+   JOURNAL
 -------------------------------- */
 #journal {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 16px;
+  animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
 .top-bar {
@@ -121,7 +136,7 @@ body {
 
 
 /* --------------------------------
-   SPREAD (two pages)
+   SPREAD
 -------------------------------- */
 .spread {
   display: flex;
@@ -137,11 +152,10 @@ body {
    LEFT PAGE
 -------------------------------- */
 .left-page {
-  background: #e8d8b8;
   width: 50%;
-  padding: 0;
-  border-right: 2px solid #c8a878;
   overflow: hidden;
+  border-right: 2px solid #c8a878;
+  flex-shrink: 0;
 }
 
 .left-page img {
@@ -158,14 +172,13 @@ body {
 .right-page {
   background: #fdf6e8;
   width: 50%;
-  padding: 28px 30px 24px 38px;
+  padding: 28px 28px 24px 38px;
   display: flex;
   flex-direction: column;
   position: relative;
   overflow: hidden;
 }
 
-/* brown lined paper */
 .right-page::after {
   content: '';
   position: absolute; inset: 0;
@@ -173,24 +186,23 @@ body {
     transparent 0px, transparent 33px,
     #d4b896 33px, #d4b896 34px
   );
-  opacity: 0.45;
+  opacity: 0.4;
   pointer-events: none;
 }
 
-/* brown margin line */
 .right-page::before {
   content: '';
   position: absolute;
   left: 26px; top: 0; bottom: 0;
   width: 1px;
-  background: rgba(180, 100, 80, 0.4);
+  background: rgba(180,100,80,0.35);
 }
 
 .page-top {
   display: flex;
   justify-content: space-between;
   align-items: baseline;
-  margin-bottom: 4px;
+  margin-bottom: 14px;
   position: relative; z-index: 1;
 }
 
@@ -200,39 +212,26 @@ body {
   color: #3a2010;
 }
 
-.date {
-  font-size: 0.58rem;
-  color: #9a7a58;
+.weather {
+  font-size: 0.6rem;
+  color: #8a6a48;
   font-style: italic;
 }
 
-.weather {
-  font-size: 0.62rem;
-  color: #8a6a48;
-  margin-bottom: 14px;
-  position: relative; z-index: 1;
-}
-
 .entry-text {
-  font-size: 0.92rem;
-  line-height: 2.06;
+  font-size: 0.88rem;
+  line-height: 1.95;
   color: #2a1a08;
   flex: 1;
   position: relative; z-index: 1;
+  overflow: hidden;
 }
 
-.note {
-  font-family: 'Caveat', cursive;
-  font-size: 1rem;
-  color: #9a7a58;
-  padding-top: 10px;
-  border-top: 1px solid #d4b896;
-  position: relative; z-index: 1;
-}
+
 
 
 /* --------------------------------
-   NAV BUTTONS
+   NAV
 -------------------------------- */
 .nav {
   display: flex;
