@@ -63,7 +63,7 @@ const entries = [
     text: "Winter brings rougher water and fewer fish near the surface. I dive deeper and stay out longer. My blubber layer, up to 5 cm thick, keeps my core temperature stable regardless of conditions. The cold is not a problem. I was built for exactly this."
   },
   {
-    day: "Year One",
+    day: "Life Span",
     date: "Jan 4th, Year 2",
     weather: "air 5°C, water 9°C, clear",
     photo: "images/pic10.jpg",
