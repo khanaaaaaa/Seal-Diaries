@@ -1,23 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8"/>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-        <title>Seal Diaries</title>
-        <link rel="stylesheet" href="style.css"/>
-    </head>
-    <body>
-        <button id="soundBtn">🔇</button>
-        <audio id="ocean" loop src="https://www.soundjay.com/nature/sounds/ocean-wave-1.mp3"></audio>
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Seal Diaries</title>
+  <link rel="stylesheet" href="style.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Caveat:wght@400;600&family=Inter:wght@300;400&display=swap" rel="stylesheet"/>
+</head>
+<body>
 
-        <header>
-            <h1>Seal Diaries</h1>
-            <p>private entries of a very honest seal</p>
-            <span>Keep going ↓</span>
-        </header>
+  <audio id="ocean" loop src="https://www.soundjay.com/nature/sounds/ocean-wave-1.mp3"></audio>
+  <button id="soundBtn" title="Toggle sound">🔇</button>
 
-        <main id="entries"></main>
+  <!-- ░░ FRONT COVER ░░ -->
+  <div id="frontCover" class="cover-wrap">
+    <div class="cover-book">
 
-        <script src="script.js"></script>
-    </body>
+      <!-- spine -->
+      <div class="book-spine">
+        <span>SEAL DIARIES</span>
+      </div>
+
+      <!-- front face -->
+      <div class="cover-face front-face">
+        <div class="cover-emboss"></div>
+        <p class="cover-tag">Field Journal · Vol. I</p>
+        <div class="cover-seal-art">🦭</div>
+        <h1>Seal<br/>Diaries</h1>
+        <p class="cover-sub">private entries of a very honest seal</p>
+        <div class="cover-rule"></div>
+        <p class="cover-species">Phoca vitulina · Pacific Coast</p>
+        <div class="cover-weather" id="coverWeather">fetching conditions…</div>
+        <button id="openBtn">Open Journal ↗</button>
+        <p class="cover-year" id="coverYear"></p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ░░ JOURNAL ░░ -->
+  <div id="journal" class="hidden">
+
+    <div class="journal-top">
+      <button id="closeBtn" title="Close journal">✕ Close</button>
+      <p id="pageCounter">Page 1 of 10</p>
+      <div id="moonPhase" class="moon-badge" title="Current moon phase"></div>
+    </div>
+
+    <div id="book"><!-- pages injected by JS --></div>
+
+    <div class="nav">
+      <button id="prevBtn">← Prev</button>
+      <div class="nav-dots" id="navDots"></div>
+      <button id="nextBtn">Next →</button>
+    </div>
+    <p class="key-hint">arrow keys · swipe to turn pages</p>
+
+  </div>
+
+  <!-- ░░ BACK COVER (shown after last page) ░░ -->
+  <div id="backCover" class="hidden">
+    <div class="back-inner">
+      <p class="back-tag">End of Volume I</p>
+      <div class="back-seal">🦭</div>
+      <p class="back-quote">"I have said what I needed to say.<br/>The fish know what they did."</p>
+      <div class="cover-rule"></div>
+      <p class="back-fact" id="backFact">Loading seal fact…</p>
+      <button id="restartBtn">← Back to Beginning</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
 </html>
