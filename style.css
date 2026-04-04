@@ -15,9 +15,6 @@ body {
 .hidden { display: none !important; }
 
 
-/* --------------------------------
-   COVER
--------------------------------- */
 #coverWrap {
   display: flex;
   align-items: center;
@@ -91,9 +88,6 @@ body {
 .cover-text button:hover { background: rgba(245,230,200,0.1); }
 
 
-/* --------------------------------
-   JOURNAL
--------------------------------- */
 #journal {
   display: flex;
   flex-direction: column;
@@ -134,10 +128,6 @@ body {
   color: rgba(245,230,200,0.45);
 }
 
-
-/* --------------------------------
-   SPREAD
--------------------------------- */
 .spread {
   display: flex;
   width: 700px;
@@ -147,10 +137,6 @@ body {
   overflow: hidden;
 }
 
-
-/* --------------------------------
-   LEFT PAGE
--------------------------------- */
 .left-page {
   width: 50%;
   overflow: hidden;
@@ -165,10 +151,6 @@ body {
   display: block;
 }
 
-
-/* --------------------------------
-   RIGHT PAGE
--------------------------------- */
 .right-page {
   background: #fdf6e8;
   width: 50%;
@@ -227,12 +209,6 @@ body {
   overflow: hidden;
 }
 
-
-
-
-/* --------------------------------
-   NAV
--------------------------------- */
 .nav {
   display: flex;
   gap: 12px;
@@ -251,3 +227,37 @@ body {
 }
 .nav button:hover    { background: rgba(245,230,200,0.28); }
 .nav button:disabled { opacity: 0.2; cursor: default; }
+
+@media (max-width: 720px) {
+  body { align-items: flex-start; padding: 24px 16px; }
+
+  #cover, #coverFront { width: 100%; }
+  .cover-img { height: 180px; }
+
+  .top-bar, .spread { width: 100%; }
+
+  .spread {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .left-page {
+    width: 100%;
+    height: 220px;
+    border-right: none;
+    border-bottom: 2px solid #c8a878;
+  }
+
+  .right-page {
+    width: 100%;
+    padding: 24px 20px 24px 30px;
+  }
+
+  .right-page::before { left: 18px; }
+
+  .entry-text {
+    font-size: 0.85rem;
+    line-height: 1.85;
+    overflow: visible;
+  }
+}
